@@ -1,10 +1,16 @@
 import { PeerServer } from "peer";
 import { JoinRoomMessage, WsMainMessage } from "./types";
 
-const peerServer = PeerServer({ port: 9000, path: "/peerjs" });
+const peerPort = Bun.env.PEER_PORT || 9000;
+const socketsPort = Bun.env.SOCKETS_PORT || 9001;
+
+const peerServer = PeerServer({ port: +peerPort, path: "/peerjs" });
 
 const sockets = Bun.serve<{ roomId: string; peerId: string }>({
 	fetch(req, server) {
+		if (req.url === "/chat") {
+			return new Response("Hello world!");
+		 }
 		const success = server.upgrade(req, { data: {} });
 		if (success) {
 			return undefined;
@@ -45,7 +51,7 @@ const sockets = Bun.serve<{ roomId: string; peerId: string }>({
 			}
 		},
 	},
-	port: 8000,
+	port: +socketsPort,
 });
 
 const converWssMessage = <T>(message: string | Buffer): T => {
@@ -60,5 +66,5 @@ const converWssMessage = <T>(message: string | Buffer): T => {
 	return message as T;
 };
 console.log("Server started on port ", sockets.port);
-console.log("peerjs server on port ", 9000);
+console.log("peerjs server on port ", peerPort);
 
