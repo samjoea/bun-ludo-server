@@ -4,7 +4,8 @@
   "name": "bun-ludo-server",
   "module": "index.ts",
   "scripts": {
-    "start": "bun index.js"
+    "start": "bun index.js",
+    "build": "bun build ./index.ts --outdir ./dist"
   },
   "devDependencies": {
     "bun-types": "latest"
