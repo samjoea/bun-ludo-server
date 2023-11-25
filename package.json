@@ -1,11 +1,21 @@
 {
   "license": "MIT",
   "private": true,
+  "name": "bun-ludo-server",
+  "module": "index.ts",
   "scripts": {
-    "start": "bun app.ts",
-    "dev": "bun --hot app.ts"
+    "start": "bun index.js"
   },
   "devDependencies": {
     "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/uuid": "^9.0.7",
+    "peer": "^1.0.1",
+    "uuid": "^9.0.1"
   }
 }

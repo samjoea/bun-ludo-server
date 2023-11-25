@@ -26,18 +26,22 @@ The server will run on port `8081` if not `PORT` is specified. Visit [http://loc
 
 Run `bun start` to start the server locally without the `--hot` reload flag.
 
-## Deploy to Render
 
 Use the official [Bun Docker image](https://hub.docker.com/r/oven/bun) to deploy this app to Render.
 
-### Manual deploy
 
-1. [Fork this repo](https://github.com/render-examples/bun-docker/fork) on GitHub or click **Use this template**.
-2. Create a new **web service** on Render, and give Render permission to access your new repo.
-3. Select **Docker** as your service's runtime.
+# bun-ludo-server
 
-That's it! Your web service will be live on your Render URL as soon as the build finishes.
+To install dependencies:
 
-### One-click deploy
+```bash
+bun install
+```
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/bun-docker)
+To run:
+
+```bash
+bun run index.ts
+```
+
+This project was created using `bun init` in bun v1.0.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
